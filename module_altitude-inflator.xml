@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_altitude-inflator" default="compile.module.altitude-inflator">
+  <dirname property="module.altitude-inflator.basedir" file="${ant.file.module_altitude-inflator}"/>
+  
+  <property name="module.jdk.home.altitude-inflator" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.altitude-inflator" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.altitude-inflator" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.altitude-inflator" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="altitude-inflator.output.dir" value="${module.altitude-inflator.basedir}/out/production/altitude-inflator"/>
+  <property name="altitude-inflator.testoutput.dir" value="${module.altitude-inflator.basedir}/out/test/altitude-inflator"/>
+  
+  <path id="altitude-inflator.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="altitude-inflator.module.production.classpath">
+    <path refid="${module.jdk.classpath.altitude-inflator}"/>
+    <path refid="library.commons-cli:commons-cli:1.3.classpath"/>
+    <path refid="library.aglobex.simulation-2.2-snapshot.classpath"/>
+    <path refid="library.com.google.maps:google-maps-services:0.1.12.classpath"/>
+    <pathelement location="${idea.home}/lib/groovy-all-2.3.9.jar"/>
+    <path refid="library.org.apache.directory.studio:org.apache.commons.io:2.4.classpath"/>
+  </path>
+  
+  <path id="altitude-inflator.runtime.production.module.classpath">
+    <pathelement location="${altitude-inflator.output.dir}"/>
+    <path refid="library.commons-cli:commons-cli:1.3.classpath"/>
+    <path refid="library.aglobex.simulation-2.2-snapshot.classpath"/>
+    <path refid="library.com.google.maps:google-maps-services:0.1.12.classpath"/>
+    <pathelement location="${idea.home}/lib/groovy-all-2.3.9.jar"/>
+    <path refid="library.org.apache.directory.studio:org.apache.commons.io:2.4.classpath"/>
+  </path>
+  
+  <path id="altitude-inflator.module.classpath">
+    <path refid="${module.jdk.classpath.altitude-inflator}"/>
+    <pathelement location="${altitude-inflator.output.dir}"/>
+    <path refid="library.commons-cli:commons-cli:1.3.classpath"/>
+    <path refid="library.aglobex.simulation-2.2-snapshot.classpath"/>
+    <path refid="library.com.google.maps:google-maps-services:0.1.12.classpath"/>
+    <pathelement location="${idea.home}/lib/groovy-all-2.3.9.jar"/>
+    <path refid="library.org.apache.directory.studio:org.apache.commons.io:2.4.classpath"/>
+  </path>
+  
+  <path id="altitude-inflator.runtime.module.classpath">
+    <pathelement location="${altitude-inflator.testoutput.dir}"/>
+    <pathelement location="${altitude-inflator.output.dir}"/>
+    <path refid="library.commons-cli:commons-cli:1.3.classpath"/>
+    <path refid="library.aglobex.simulation-2.2-snapshot.classpath"/>
+    <path refid="library.com.google.maps:google-maps-services:0.1.12.classpath"/>
+    <pathelement location="${idea.home}/lib/groovy-all-2.3.9.jar"/>
+    <path refid="library.org.apache.directory.studio:org.apache.commons.io:2.4.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.altitude-inflator">
+    <patternset refid="ignored.files"/>
+    <exclude name="maps/**"/>
+    <exclude name="aglobe/util/**"/>
+    <exclude name="aglobex/operator/gps/**"/>
+    <exclude name="aglobex/operator/gps/earth/**"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.altitude-inflator">
+    <patternset refid="excluded.from.module.altitude-inflator"/>
+  </patternset>
+  
+  <path id="altitude-inflator.module.sourcepath">
+    <dirset dir="${module.altitude-inflator.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.altitude-inflator" depends="compile.module.altitude-inflator.production,compile.module.altitude-inflator.tests" description="Compile module altitude-inflator"/>
+  
+  <target name="compile.module.altitude-inflator.production" depends="register.custom.compilers" description="Compile module altitude-inflator; production classes">
+    <mkdir dir="${altitude-inflator.output.dir}"/>
+    <javac2 destdir="${altitude-inflator.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.altitude-inflator}/javac">
+      <compilerarg line="${compiler.args.altitude-inflator}"/>
+      <bootclasspath refid="altitude-inflator.module.bootclasspath"/>
+      <classpath refid="altitude-inflator.module.production.classpath"/>
+      <src refid="altitude-inflator.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.altitude-inflator"/>
+    </javac2>
+    
+    <copy todir="${altitude-inflator.output.dir}">
+      <fileset dir="${module.altitude-inflator.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.altitude-inflator.tests" depends="register.custom.compilers,compile.module.altitude-inflator.production" description="compile module altitude-inflator; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.altitude-inflator" description="cleanup module">
+    <delete dir="${altitude-inflator.output.dir}"/>
+    <delete dir="${altitude-inflator.testoutput.dir}"/>
+  </target>
+</project>
