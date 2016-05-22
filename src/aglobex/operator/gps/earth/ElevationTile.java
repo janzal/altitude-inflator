@@ -190,7 +190,7 @@ public class ElevationTile {
             throw new RuntimeException("Cannot store data from empty tile! ("+
                     idxLatitude+", "+idxLongitude+", "+depth+")");
         }
-        Files.createParentDirs(file);
+//        Files.createParentDirs(file);
         String filepath = file.getAbsolutePath();
         ImageIO.write(this.getDataAsImage(precision), filepath.substring(filepath.length()-3, 
                 filepath.length()), file);
@@ -214,7 +214,7 @@ public class ElevationTile {
         }
         tmp.setData(scaledData);
         
-        Files.createParentDirs(file);
+//        Files.createParentDirs(file);
         String filepath = file.getAbsolutePath();
         BufferedImage img = tmp.getDataAsImage(precision);
         ImageIO.write(img, filepath.substring(filepath.length()-3, filepath.length()), file);

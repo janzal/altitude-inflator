@@ -1,52 +1,36 @@
-//package maps;
-//
-//import java.awt.Color;
-//import java.awt.Graphics;
-//import java.awt.image.BufferedImage;
-//import java.io.BufferedWriter;
-//import java.io.File;
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
-//import java.io.FileOutputStream;
-//import java.io.FileWriter;
-//import java.io.IOException;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
-//import java.net.MalformedURLException;
-//import java.net.URL;
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
-//import java.util.concurrent.Callable;
-//import java.util.concurrent.CancellationException;
-//import java.util.concurrent.ExecutionException;
-//import java.util.concurrent.Executors;
-//import java.util.concurrent.Future;
-//import java.util.concurrent.ScheduledExecutorService;
-//import java.util.concurrent.TimeUnit;
-//
-//import javax.imageio.ImageIO;
-//
-//import aglobe.util.Logger;
-//import aglobex.simulation.global.GpsTools;
-//
-///**
-// * This class serves for fetching and processing of images fetched from google
-// * maps static API.<br>
-// * This class is NOT thread safe!<br>
-// *
-// * <h4>Anonymous limits</h4>
-// * 1000 requests per day per IP<br>
-// * 50 requests per minute per IP<br>
-// * 3 requests per second<br>
-// *
-// * <h4>API key binding limits</h4>
-// * 25 000 requests per day per IP<br>
-// * 5 requests per second<br>
-// *
-// * @author Kaiser Vojtech
-// * @author Blovsky Tomas
-// */
-//public class GoogleMapsDownloader {
+package maps;
+
+import aglobe.util.Logger;
+import aglobex.simulation.global.GpsTools;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.*;
+
+/**
+ * This class serves for fetching and processing of images fetched from google
+ * maps static API.<br>
+ * This class is NOT thread safe!<br>
+ *
+ * <h4>Anonymous limits</h4>
+ * 1000 requests per day per IP<br>
+ * 50 requests per minute per IP<br>
+ * 3 requests per second<br>
+ *
+ * <h4>API key binding limits</h4>
+ * 25 000 requests per day per IP<br>
+ * 5 requests per second<br>
+ *
+ * @author Kaiser Vojtech
+ * @author Blovsky Tomas
+ */
+public class GoogleMapsDownloader {
 //    public static void main(String[] args) throws Exception{
 //        //whole prague airport + surroundings
 //        /*GoogleMapsDownloader.storeMaps(50.118635, 14.216575, 50.085602, 14.292707,
@@ -982,4 +966,4 @@
 //            return getMap(centerLatitude, centerLongitude, imageWidth, imageHeight, zoomLevel, mapType);
 //        }
 //    }
-//}
+}

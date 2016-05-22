@@ -5,6 +5,9 @@ import org.apache.commons.cli.*;
 import java.util.Arrays;
 
 public class AltitudeInflator {
+    public static final String APP_NAME = "altitude-inflator";
+    public static final String VERSION = "v0.1.1-beta";
+
     private static Options mOptions = null;
 
     private static Options getOptions() {
@@ -38,6 +41,18 @@ public class AltitudeInflator {
                 .hasArg()
                 .desc("just downloads tiles from Google Maps required by input file")
                 .build());
+        mOptions.addOption(Option.builder()
+                .longOpt("tiles-depth")
+                .argName("BYTE")
+                .hasArg()
+                .desc("depth of quadtree (default value is " + InflatorTilesDownloader.DEFAULT_DEPTH + ")")
+                .build());
+        mOptions.addOption(Option.builder()
+                .longOpt("tiles-sample-count")
+                .argName("INT")
+                .hasArg()
+                .desc("samples count per tile (default value is " + InflatorTilesDownloader.DEFAULT_SAMPLES_COUNT + ")")
+                .build());
         mOptions.addOption(Option.builder("e")
                 .longOpt("elevation-provider")
                 .argName("PROVIDER")
@@ -45,18 +60,19 @@ public class AltitudeInflator {
                 .desc("elevation provider <gmaps|tiles>\ngmaps - provider uses direct calls to Google Maps API\ntiles - loads tiles from folder")
                 .build());
         mOptions.addOption(Option.builder("l")
-                .longOpt("tiles")
+                .longOpt("tiles-temp")
                 .argName("PATH")
                 .hasArg()
-                .desc("when tiles elevation provider is used, it is necessary to provide path to resource folder")
+                .desc("when tiles elevation provider is used, it is necessary to provide path to resource temp folder")
                 .build());
         mOptions.addOption(Option.builder("k")
                 .argName("KEY")
                 .longOpt("api-key")
-                .hasArg()
-                .desc("Google Apps API key")
+                .hasArgs()
+                .desc("Google Apps API key (multiple keys can be used at once)")
                 .build());
         mOptions.addOption("h", "help", false, "shows help");
+        mOptions.addOption("v", "version", false, "shows version");
 
         return mOptions;
     }
@@ -64,15 +80,24 @@ public class AltitudeInflator {
     private static void printHelp() {
         Options options = getOptions();
         HelpFormatter helpFormatter = new HelpFormatter();
-        helpFormatter.printHelp("altitude-inflator", options);
+        helpFormatter.printHelp(APP_NAME, options);
     }
 
     public static void main(String[] args) {
-        String[] myArgs = new String[]{"--elevation-provider", "gmaps", "--offset", "2", "--api-key", "AIzaSyBxeAGp5yIfJQtigk3e7D0veyUpZgd8tBQ", "-f", "data/sample.waypoints"};
+        String[] myArgs = new String[]{"-v", "--elevation-provider", "gmaps", "--offset", "2",
+                "--api-key", "AIzaSyBxeAGp5yIfJQtigk3e7D0veyUpZgd8tBQ",
+//                "--api-key", "TENHLE_NE_BIzaSyBxeAGp5yIfJQtigk3e7D0veyUpZgd8tBQ",
+                "-f", "data/sample.waypoints",
+                "--download-tiles", "data/"};
 
         CommandLineParser parser = new DefaultParser();
         try {
             CommandLine line = parser.parse(getOptions(), myArgs);
+
+            if (line.hasOption('v')) {
+                System.out.println(APP_NAME + " " + VERSION);
+                return;
+            }
 
             if (line.hasOption('h')) {
                 printHelp();
@@ -80,7 +105,8 @@ public class AltitudeInflator {
             }
 
             if (line.hasOption("download-tiles")) {
-                System.out.println("Downloading tiles...");
+                InflatorTilesDownloader downloader = InflatorTilesDownloader.createFromArgs(line);
+                downloader.run();
             } else {
                 AltitudeInflatorApp app = AltitudeInflatorApp.createFromArgs(line);
                 app.run();
