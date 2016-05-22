@@ -7,24 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="648776aa-a81b-4786-8b3b-e266658f93df" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/zidlov.waypoints" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/aglobex/operator/gps/earth/ElevationMap.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/aglobex/gps/earth/ElevationMap.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/aglobex/operator/gps/earth/ElevationTile.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/aglobex/gps/earth/ElevationTile.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/maps/ElevationMapConvertor.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/maps/ElevationMapConvertor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/maps/GoogleElevationDownloader.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/maps/GoogleElevationDownloader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/maps/GoogleMapsConverter.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/maps/GoogleMapsConverter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/maps/GoogleMapsDownloader.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/maps/GoogleMapsDownloader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/maps/StaticGoogleElevationDownloader.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/maps/StaticGoogleElevationDownloader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/maps/TileCreator.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/maps/TileCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/altitude-inflator/org/cvut/bep/AltitudeInflator.class" afterPath="$PROJECT_DIR$/out/production/altitude-inflator/org/cvut/bep/AltitudeInflator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/altitude-inflator/org/cvut/bep/AltitudeInflatorApp.class" afterPath="$PROJECT_DIR$/out/production/altitude-inflator/org/cvut/bep/AltitudeInflatorApp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/cvut/bep/AltitudeInflator.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/AltitudeInflator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/cvut/bep/AltitudeInflatorApp.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/AltitudeInflatorApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/cvut/bep/InflatorTilesDownloader.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/InflatorTilesDownloader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/cvut/bep/missionplanner/WaypointFile.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/missionplanner/WaypointFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/cvut/bep/missionplanner/WaypointItem.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/missionplanner/WaypointItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/cvut/bep/providers/TilesElevationProvider.java" afterPath="$PROJECT_DIR$/src/org/cvut/bep/providers/TilesElevationProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/work/.gitignore" afterPath="$PROJECT_DIR$/work/.gitignore" />
     </list>
     <ignored path="altitude-inflator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,14 +68,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ElevationTile.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ElevationTile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/cvut/bep/aglobex/gps/earth/ElevationTile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.475">
+            <state vertical-scroll-proportion="0.0">
               <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tiles/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/work/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -146,6 +150,8 @@
         <option value="$PROJECT_DIR$/src/org/cvut/bep/AltitudeInflator.java" />
         <option value="$PROJECT_DIR$/src/aglobex/operator/gps/earth/ElevationTile.java" />
         <option value="$PROJECT_DIR$/src/org/cvut/bep/aglobex/gps/earth/ElevationTile.java" />
+        <option value="$PROJECT_DIR$/tiles/.gitignore" />
+        <option value="$PROJECT_DIR$/work/.gitignore" />
       </list>
     </option>
   </component>
@@ -206,6 +212,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="altitude-inflator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="altitude-inflator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="altitude-inflator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="altitude-inflator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="altitude-inflator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -896,16 +930,16 @@
       <updated>1463522384968</updated>
       <workItem from="1463522389027" duration="5118000" />
       <workItem from="1463665866037" duration="3715000" />
-      <workItem from="1463671046210" duration="59528000" />
+      <workItem from="1463671046210" duration="59760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68361000" />
+    <option name="totallyTimeSpent" value="68593000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1133" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -925,7 +959,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28146014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28146014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1311,11 +1345,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/cvut/bep/aglobex/gps/earth/ElevationTile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.475">
+        <state vertical-scroll-proportion="0.0">
           <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tiles/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/work/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
