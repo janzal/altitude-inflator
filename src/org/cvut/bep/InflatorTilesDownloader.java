@@ -1,12 +1,13 @@
 package org.cvut.bep;
 
-import maps.GoogleElevationDownloader;
-import maps.StaticGoogleElevationDownloader;
+import org.cvut.bep.maps.ElevationMapConvertor;
+import org.cvut.bep.maps.GoogleElevationDownloader;
 import org.apache.commons.cli.CommandLine;
 import org.cvut.bep.missionplanner.WaypointFile;
 import org.cvut.bep.missionplanner.WaypointItem;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -33,9 +34,11 @@ public class InflatorTilesDownloader {
     public static InflatorTilesDownloader createFromArgs(CommandLine args) throws AltitudeInflatorException {
         String[] apiKeys = args.getOptionValues("api-key");
         String fileName = args.getOptionValue("file");
-        String outputFolder = args.getOptionValue("download-tiles");
-        byte depth = Byte.parseByte(args.getOptionValue("tiles-depth", "12"));
-        int samplesCount = Integer.parseInt(args.getOptionValue("tiles-samples-count", "512"));
+        String outputFolder = args.getOptionValue("tiles-folder");
+        byte depth = Byte.parseByte(args.getOptionValue("tiles-depth",
+                new Byte(InflatorTilesDownloader.DEFAULT_DEPTH).toString()));
+        int samplesCount = Integer.parseInt(args.getOptionValue("tiles-samples-count",
+                new Integer(InflatorTilesDownloader.DEFAULT_SAMPLES_COUNT).toString()));
 
         final InflatorTilesDownloader downloader = new InflatorTilesDownloader(fileName, outputFolder, apiKeys);
         downloader.setDepth(depth);
@@ -47,17 +50,25 @@ public class InflatorTilesDownloader {
         waypointFile = WaypointFile.createFromFile(fileName);
     }
 
+    private double getDegreesPerTile(byte depth) {
+        return 180.0 / (1 << depth);
+    }
+
     private int getLatitudeIndex(double latitude) {
-        return 0;
+        double degreesPerTile = 360.0 / (2 << depth);
+        int idxLatitude = (int) Math.floor((latitude + 90) / degreesPerTile) - (latitude == 90 ? 1 : 0);
+        return idxLatitude;
     }
 
     private int getLongitudeIndex(double longitude) {
-        return 0;
+        double degreesPerTile = 360.0 / (2 << depth);
+        int idxLongitude = (int) Math.floor((longitude + 180) / degreesPerTile) - (longitude == 180 ? 1 : 0);
+        return idxLongitude;
     }
 
     private Set<IdPair> detectTiles() {
         final ArrayList<WaypointItem> items = waypointFile.getItems();
-        Set<IdPair> pairs = new LinkedHashSet<>();
+        Set<IdPair> pairs = new HashSet<IdPair>();
 
         for (WaypointItem item : items) {
             int idLat = getLatitudeIndex(item.getLatitude());
@@ -76,7 +87,7 @@ public class InflatorTilesDownloader {
         return data;
     }
 
-    private void saveTiles(Set<IdPair> pairs) throws GoogleElevationDownloader.LimitExceededException {
+    private void saveTiles(Set<IdPair> pairs) throws GoogleElevationDownloader.LimitExceededException, IOException {
         GoogleElevationDownloader downloader = new GoogleElevationDownloader();
         downloader.setApiKey(apiKeys.poll());
 
@@ -89,6 +100,8 @@ public class InflatorTilesDownloader {
                 downloader.setApiKey(apiKey);
                 data = downloadTile(downloader, pair);
             }
+
+            ElevationMapConvertor.exportTile(pair.latitudeIndex, pair.longitudeIndex, this.depth, data, outputFolder);
         }
 
 //        ElevationMapConvsertor.exportTile(
@@ -111,7 +124,7 @@ public class InflatorTilesDownloader {
         return samplesCount;
     }
 
-    public void run() throws FileNotFoundException {
+    public void run() throws IOException {
         loadWaypoints();
         final Set<IdPair> idPairs = detectTiles();
         try {
@@ -130,9 +143,22 @@ public class InflatorTilesDownloader {
         }
 
         @Override
+        public String toString() {
+            return "Pair <" + latitudeIndex + ", " + longitudeIndex + ">";
+        }
+
+        @Override
         public boolean equals(Object obj) {
             IdPair pair = (IdPair) obj;
             return (latitudeIndex == pair.latitudeIndex && longitudeIndex == pair.longitudeIndex);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = 1;
+            result = 37 * result + latitudeIndex;
+            result = 19 * result + longitudeIndex;
+            return result;
         }
     }
 }

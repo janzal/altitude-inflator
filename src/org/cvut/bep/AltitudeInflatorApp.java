@@ -38,6 +38,11 @@ public class AltitudeInflatorApp {
         String altOutputFilename = FilenameUtils.concat(FilenameUtils.getPath(fileName), FilenameUtils.getBaseName(fileName)
                 + ".alt." + FilenameUtils.getExtension(fileName));
         String outputFilename = args.getOptionValue("output", altOutputFilename);
+        String tilesFolder = args.getOptionValue("tiles-folder");
+        byte depth = Byte.parseByte(args.getOptionValue("tiles-depth",
+                new Byte(InflatorTilesDownloader.DEFAULT_DEPTH).toString()));
+        int samplesCount = Integer.parseInt(args.getOptionValue("tiles-samples-count",
+                new Integer(InflatorTilesDownloader.DEFAULT_SAMPLES_COUNT).toString()));
 
         ElevationProvider elevationProvider = null;
         String provider = args.getOptionValue("elevation-provider");
@@ -48,11 +53,11 @@ public class AltitudeInflatorApp {
 
             elevationProvider = GoogleMapsElevationProvider.createWithApiKey(apiKey);
         } else if (provider == "tiles") {
-            if (!args.hasOption("tiles")) {
-                throw new AltitudeInflatorException("Tiles folder (--tiles) is mandatory when tiles provider is used");
+            if (!args.hasOption("tiles-folder")) {
+                throw new AltitudeInflatorException("Tiles folder (--tiles-folder) is mandatory when tiles provider is used");
             }
 
-            elevationProvider = new TilesElevationProvider();
+            elevationProvider = new TilesElevationProvider(tilesFolder, depth, samplesCount);
         } else if (provider == null) {
             throw new AltitudeInflatorException("You have to define elevation provider");
         } else {

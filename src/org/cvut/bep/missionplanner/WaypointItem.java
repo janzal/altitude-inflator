@@ -28,8 +28,8 @@ public class WaypointItem {
         waypointItem.setParam2(scanner.nextDouble());
         waypointItem.setParam3(scanner.nextDouble());
         waypointItem.setParam4(scanner.nextDouble());
-        waypointItem.setLongitude(scanner.nextDouble());
         waypointItem.setLatitude(scanner.nextDouble());
+        waypointItem.setLongitude(scanner.nextDouble());
         waypointItem.setAltitude(scanner.nextDouble());
         waypointItem.setAutocontinue(scanner.nextInt());
 

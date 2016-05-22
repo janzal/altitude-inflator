@@ -40,7 +40,9 @@ public class WaypointFile {
 
         ArrayList<WaypointItem> items = new ArrayList<>();
         while (scanner.hasNextLine()) {
-            items.add(WaypointItem.createFromString(scanner.nextLine()));
+            String line = scanner.nextLine();
+            if (line == "") continue;
+            items.add(WaypointItem.createFromString(line));
         }
 
         return new WaypointFile(header, items);

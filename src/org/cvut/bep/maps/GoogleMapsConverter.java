@@ -1,4 +1,4 @@
-package maps;
+package org.cvut.bep.maps;
 
 import java.awt.Graphics2D;
 import java.awt.Image;

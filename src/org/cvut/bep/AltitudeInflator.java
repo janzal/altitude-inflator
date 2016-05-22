@@ -37,9 +37,13 @@ public class AltitudeInflator {
 
         mOptions.addOption(Option.builder("s")
                 .longOpt("download-tiles")
-                .argName("PATH")
-                .hasArg()
                 .desc("just downloads tiles from Google Maps required by input file")
+                .build());
+        mOptions.addOption(Option.builder("p")
+                .longOpt("tiles-folder")
+                .hasArg()
+                .argName("PATH")
+                .desc("folder where are tiles are supposed to be stored")
                 .build());
         mOptions.addOption(Option.builder()
                 .longOpt("tiles-depth")
@@ -48,7 +52,7 @@ public class AltitudeInflator {
                 .desc("depth of quadtree (default value is " + InflatorTilesDownloader.DEFAULT_DEPTH + ")")
                 .build());
         mOptions.addOption(Option.builder()
-                .longOpt("tiles-sample-count")
+                .longOpt("tiles-samples-count")
                 .argName("INT")
                 .hasArg()
                 .desc("samples count per tile (default value is " + InflatorTilesDownloader.DEFAULT_SAMPLES_COUNT + ")")
@@ -84,11 +88,14 @@ public class AltitudeInflator {
     }
 
     public static void main(String[] args) {
-        String[] myArgs = new String[]{"-v", "--elevation-provider", "gmaps", "--offset", "2",
+        String[] myArgs = new String[]{"--elevation-provider", "tiles", "--offset", "1000",
                 "--api-key", "AIzaSyBxeAGp5yIfJQtigk3e7D0veyUpZgd8tBQ",
 //                "--api-key", "TENHLE_NE_BIzaSyBxeAGp5yIfJQtigk3e7D0veyUpZgd8tBQ",
-                "-f", "data/sample.waypoints",
-                "--download-tiles", "data/"};
+                "-f", "data/zidlov.waypoints",
+//                "--download-tiles",
+                "--tiles-folder", "./tiles/",
+                "--tiles-samples-count", "20"
+        };
 
         CommandLineParser parser = new DefaultParser();
         try {

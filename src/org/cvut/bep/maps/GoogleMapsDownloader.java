@@ -1,4 +1,4 @@
-package maps;
+package org.cvut.bep.maps;
 
 import aglobe.util.Logger;
 import aglobex.simulation.global.GpsTools;
